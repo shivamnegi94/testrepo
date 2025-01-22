@@ -1,6 +1,6 @@
 template:
   name: StageT200
-  identifier: StageT200
+  identifier: StageT2000
   versionLabel: v1
   type: Stage
   projectIdentifier: TestProject
