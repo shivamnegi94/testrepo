@@ -15,7 +15,7 @@ template:
               name: dd
               identifier: dd
               template:
-                templateRef: Step22
+                templateRef: Step222
                 versionLabel: v1222234550
                 templateInputs:
                   type: JenkinsBuild
