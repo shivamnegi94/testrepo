@@ -1,0 +1,27 @@
+template:
+  name: StageT200
+  identifier: StageT200
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: dd
+              identifier: dd
+              template:
+                templateRef: Step2
+                versionLabel: v1
+                templateInputs:
+                  type: JenkinsBuild
+                  spec:
+                    connectorRef: <+input>
+                    consoleLogPollFrequency: <+input>
+                    jobName: <+input>
+                    jobParameter: <+input>
+                  timeout: <+input>
