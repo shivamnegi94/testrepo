@@ -11,7 +11,7 @@ template:
     type: ShellScript
     spec:
       shell: Bash
-      executionTarget: {}
+      executionTarget: <+input>
       delegateSelectors: []
       source:
         type: Inline
