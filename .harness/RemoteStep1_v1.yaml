@@ -12,7 +12,7 @@ template:
     spec:
       shell: Bash
       executionTarget: <+input>
-      delegateSelectors: []
+      delegateSelectors: <+input>
       source:
         type: Inline
         spec:
