@@ -16,7 +16,7 @@ template:
               identifier: dd
               template:
                 templateRef: Step222
-                versionLabel: v12222345500090001234
+                versionLabel: v10
                 templateInputs:
                   type: JenkinsBuild
                   spec:
