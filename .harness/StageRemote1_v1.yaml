@@ -1,0 +1,27 @@
+template:
+  name: StageRemote1
+  identifier: StageRemote1
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: Step1
+              identifier: Step1
+              template:
+                templateRef: RemoteStep1
+                versionLabel: v1
+                gitBranch: main
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
