@@ -19,3 +19,4 @@ template:
           script: <+input>
       environmentVariables: []
       outputVariables: []
+      includeInfraSelectors: <+input>
