@@ -1,0 +1,38 @@
+pipeline:
+  name: PipelineP1
+  identifier: PipelineP1
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: S1
+                  identifier: S1
+                  template:
+                    templateRef: RemoteStep1
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        executionTarget: <+input>
+                        delegateSelectors: <+input>
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+                        environmentVariables:
+                          - name: v1
+                            type: String
+                            value: <+input>
+                        includeInfraSelectors: <+input>
+                        outputAlias:
+                          key: <+input>
+        tags: {}
