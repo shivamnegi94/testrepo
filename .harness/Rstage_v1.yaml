@@ -26,3 +26,5 @@ template:
                       spec:
                         script: <+input>
                     includeInfraSelectors: <+input>
+                    outputAlias:
+                      key: <+input>
