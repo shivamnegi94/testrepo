@@ -12,7 +12,7 @@ template:
       execution:
         steps:
           - step:
-              name: S123
+              name: S1233
               identifier: S12
               template:
                 templateRef: NewStepR1
