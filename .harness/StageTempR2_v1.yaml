@@ -39,3 +39,11 @@ template:
               template:
                 templateRef: StepTemplateRemote1
                 versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  timeout: <+input>
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
