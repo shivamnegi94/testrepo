@@ -20,6 +20,8 @@ template:
                 templateInputs:
                   type: ShellScript
                   spec:
+                    executionTarget: <+input>
+                    delegateSelectors: <+input>
                     source:
                       type: Inline
                       spec:
@@ -27,4 +29,3 @@ template:
                     includeInfraSelectors: <+input>
                     outputAlias:
                       key: <+input>
-                  timeout: <+input>
