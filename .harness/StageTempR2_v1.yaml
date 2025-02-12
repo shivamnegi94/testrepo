@@ -33,3 +33,9 @@ template:
                     includeInfraSelectors: <+input>
                     outputAlias:
                       key: <+input>
+          - step:
+              name: S1234
+              identifier: S1234
+              template:
+                templateRef: StepTemplateRemote1
+                versionLabel: v1
