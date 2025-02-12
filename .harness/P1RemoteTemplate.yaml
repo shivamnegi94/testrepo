@@ -1,0 +1,37 @@
+pipeline:
+  name: P1RemoteTemplate
+  identifier: P1RemoteTemplate
+  projectIdentifier: Shivam
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: S1
+                  identifier: S1
+                  template:
+                    templateRef: StepTestInline
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      timeout: <+input>
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+                        environmentVariables:
+                          - name: var1
+                            type: String
+                            value: <+input>
+                        includeInfraSelectors: <+input>
+                        outputAlias:
+                          key: <+input>
+        tags: {}
