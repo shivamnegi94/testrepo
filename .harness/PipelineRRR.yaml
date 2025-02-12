@@ -22,6 +22,8 @@ pipeline:
                     templateInputs:
                       type: ShellScript
                       spec:
+                        executionTarget: <+input>
+                        delegateSelectors: <+input>
                         source:
                           type: Inline
                           spec:
