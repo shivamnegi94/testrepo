@@ -23,6 +23,7 @@ pipeline:
                       type: ShellScript
                       timeout: <+input>
                       spec:
+                        executionTarget: <+input>
                         source:
                           type: Inline
                           spec:
