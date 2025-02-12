@@ -1,0 +1,14 @@
+pipeline:
+  name: PipelineYaml
+  identifier: PipelineYaml
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: t1
+        identifier: t1
+        tags: {}
+        template:
+          templateRef: RemoteT1
+          versionLabel: v1
