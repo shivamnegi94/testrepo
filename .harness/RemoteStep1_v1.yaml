@@ -25,4 +25,4 @@ template:
       outputAlias:
         key: <+input>
         scope: Pipeline
-    timeout: 10m
+    timeout: <+input>
