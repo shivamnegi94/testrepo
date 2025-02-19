@@ -35,4 +35,5 @@ pipeline:
                         includeInfraSelectors: <+input>
                         outputAlias:
                           key: <+input>
+                      timeout: <+input>
         tags: {}
