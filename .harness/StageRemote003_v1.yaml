@@ -30,6 +30,9 @@ template:
                       - name: v1
                         type: String
                         value: <+input>
+                      - name: v2
+                        type: String
+                        value: <+input>
                     includeInfraSelectors: <+input>
                     outputAlias:
                       key: <+input>
