@@ -34,3 +34,4 @@ template:
                     includeInfraSelectors: <+input>
                     outputAlias:
                       key: <+input>
+                  timeout: <+input>
