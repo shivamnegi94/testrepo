@@ -23,10 +23,6 @@ pipeline:
                       type: ShellScript
                       spec:
                         executionTarget: <+input>
-                        source:
-                          type: Inline
-                          spec:
-                            script: <+input>
                         environmentVariables:
                           - name: var1
                             type: String
