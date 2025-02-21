@@ -20,7 +20,7 @@ template:
                 templateInputs:
                   type: ShellScript
                   spec:
-                    executionTarget: <+input>
+                    executionTarget: ""
                     delegateSelectors: <+input>
                     source:
                       type: Inline
