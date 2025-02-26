@@ -1,0 +1,19 @@
+template:
+  name: StageRemo999
+  identifier: StageRemo999
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S111
+              identifier: S111
+              template:
+                templateRef: StepRemote
+                versionLabel: v1
