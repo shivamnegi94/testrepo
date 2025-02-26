@@ -24,4 +24,4 @@ template:
                     source:
                       type: Inline
                       spec:
-                        script: ""
+                        script: "12345678"
