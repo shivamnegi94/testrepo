@@ -1,0 +1,30 @@
+pipeline:
+  name: StepUsePIpeline
+  identifier: StepUsePIpeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S12
+        identifier: S12
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: S23
+                  identifier: S23
+                  template:
+                    templateRef: StepRemoteT1
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+                        includeInfraSelectors: <+input>
+        tags: {}
