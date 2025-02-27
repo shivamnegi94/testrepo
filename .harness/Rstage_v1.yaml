@@ -22,10 +22,6 @@ template:
                   spec:
                     executionTarget: <+input>
                     delegateSelectors: <+input>
-                    source:
-                      type: Inline
-                      spec:
-                        script: <+input>
                     environmentVariables:
                       - name: v1
                         type: String
@@ -39,3 +35,4 @@ template:
                     includeInfraSelectors: <+input>
                     outputAlias:
                       key: <+input>
+                  timeout: <+input>
