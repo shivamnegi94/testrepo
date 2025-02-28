@@ -1,0 +1,30 @@
+pipeline:
+  name: Pipelin000100
+  identifier: Pipelin000100
+  tags: {}
+  template:
+    templateRef: Pipeline00010
+    versionLabel: v1
+    templateInputs:
+      stages:
+        - stage:
+            identifier: S12
+            template:
+              templateInputs:
+                type: Custom
+                spec:
+                  execution:
+                    steps:
+                      - step:
+                          identifier: S123
+                          template:
+                            templateInputs:
+                              type: ShellScriptProvision
+                              timeout: <+input>
+                              spec:
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: <+input>
+  projectIdentifier: TestProject
+  orgIdentifier: default
