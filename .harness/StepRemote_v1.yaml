@@ -7,7 +7,7 @@ template:
   orgIdentifier: default
   tags: {}
   spec:
-    timeout: <+input>
+    timeout: 10m
     type: ShellScript
     spec:
       shell: Bash
