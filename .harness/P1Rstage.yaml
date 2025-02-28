@@ -1,0 +1,44 @@
+template:
+  name: P1Rstage
+  identifier: P1Rstage
+  versionLabel: v2
+  type: Pipeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: S12
+          identifier: S12
+          tags: {}
+          template:
+            templateRef: Rstage
+            versionLabel: v1
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: S123
+                        template:
+                          templateInputs:
+                            type: ShellScript
+                            spec:
+                              executionTarget: <+input>
+                              delegateSelectors: <+input>
+                              environmentVariables:
+                                - name: v1
+                                  type: String
+                                  value: <+input>
+                                - name: v2
+                                  type: String
+                                  value: <+input>
+                                - name: v3
+                                  type: String
+                                  value: <+input>
+                              includeInfraSelectors: <+input>
+                              outputAlias:
+                                key: <+input>
+                            timeout: <+input>
