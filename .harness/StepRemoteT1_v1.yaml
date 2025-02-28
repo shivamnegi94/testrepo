@@ -15,7 +15,7 @@ template:
       source:
         type: Inline
         spec:
-          script: <+input>
+          script: echo ""
       environmentVariables: []
       outputVariables: []
       includeInfraSelectors: <+input>
