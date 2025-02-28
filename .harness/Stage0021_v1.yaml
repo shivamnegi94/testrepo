@@ -1,0 +1,26 @@
+template:
+  name: Stage0021
+  identifier: Stage0021
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: St
+              identifier: St
+              template:
+                templateRef: S00123
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
