@@ -36,6 +36,9 @@ template:
                       - name: v3
                         type: String
                         value: <+input>
+                      - name: v444
+                        type: String
+                        value: <+input>
                     includeInfraSelectors: <+input>
                     outputAlias:
                       key: <+input>
