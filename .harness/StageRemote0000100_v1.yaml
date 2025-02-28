@@ -1,0 +1,27 @@
+template:
+  name: StageRemote0000100
+  identifier: StageRemote0000100
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S123
+              identifier: S123
+              template:
+                templateRef: StepRemote00009
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScriptProvision
+                  timeout: <+input>
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
