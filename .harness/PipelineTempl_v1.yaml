@@ -1,0 +1,33 @@
+template:
+  name: PipelineTempl
+  identifier: PipelineTempl
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: s12
+          identifier: s12
+          tags: {}
+          template:
+            templateRef: Stage0021
+            versionLabel: v1
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: St
+                        template:
+                          templateInputs:
+                            type: ShellScript
+                            timeout: <+input>
+                            spec:
+                              source:
+                                type: Inline
+                                spec:
+                                  script: <+input>
