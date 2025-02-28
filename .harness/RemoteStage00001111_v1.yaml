@@ -1,0 +1,26 @@
+template:
+  name: RemoteStage00001111
+  identifier: RemoteStage00001111
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S123
+              identifier: S123
+              template:
+                templateRef: RemoteStep00122
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
