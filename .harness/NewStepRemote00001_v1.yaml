@@ -14,4 +14,7 @@ template:
         type: Inline
         spec:
           script: <+input>
-      environmentVariables: []
+      environmentVariables:
+        - name: var123
+          type: String
+          value: <+input>
