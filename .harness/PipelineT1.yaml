@@ -1,0 +1,29 @@
+pipeline:
+  name: PipelineT1
+  identifier: PipelineT1
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S12
+        identifier: S12
+        tags: {}
+        template:
+          templateRef: StageRemote002
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: S12345
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          timeout: <+input>
+                          spec:
+                            includeInfraSelectors: <+input>
+                            outputAlias:
+                              key: <+input>
