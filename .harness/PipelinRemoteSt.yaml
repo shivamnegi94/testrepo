@@ -1,0 +1,29 @@
+pipeline:
+  name: PipelinRemoteSt
+  identifier: PipelinRemoteSt
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S23
+        identifier: S23
+        tags: {}
+        template:
+          templateRef: Stage0021
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: St
+                      template:
+                        templateInputs:
+                          type: ShellScript
+                          spec:
+                            source:
+                              type: Inline
+                              spec:
+                                script: <+input>
