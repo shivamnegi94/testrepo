@@ -20,3 +20,6 @@ template:
       environmentVariables: []
       outputVariables: []
       includeInfraSelectors: <+input>
+      outputAlias:
+        key: <+input>
+        scope: Pipeline
