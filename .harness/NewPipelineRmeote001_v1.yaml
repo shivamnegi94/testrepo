@@ -1,0 +1,32 @@
+template:
+  name: NewPipelineRmeote001
+  identifier: NewPipelineRmeote001
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: S1222
+          identifier: S1222
+          tags: {}
+          template:
+            templateRef: NewStageRemote00001
+            versionLabel: v1
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: S12
+                        template:
+                          templateInputs:
+                            type: ShellScriptProvision
+                            spec:
+                              source:
+                                type: Inline
+                                spec:
+                                  script: <+input>
