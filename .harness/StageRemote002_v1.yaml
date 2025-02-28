@@ -19,9 +19,9 @@ template:
                 versionLabel: v1
                 templateInputs:
                   type: ShellScript
-                  timeout: <+input>
                   spec:
                     source:
                       type: Inline
                       spec:
                         script: "12345678"
+                    includeInfraSelectors: <+input>
