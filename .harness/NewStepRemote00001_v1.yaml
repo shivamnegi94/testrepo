@@ -20,4 +20,4 @@ template:
         - name: var12345
           type: String
           value: <+input>
-    timeout: 10m
+    timeout: <+input>
