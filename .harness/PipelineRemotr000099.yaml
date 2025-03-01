@@ -1,0 +1,29 @@
+pipeline:
+  name: PipelineRemotr000099
+  identifier: PipelineRemotr000099
+  tags: {}
+  template:
+    templateRef: Pipeline0009999
+    versionLabel: v1
+    templateInputs:
+      stages:
+        - stage:
+            identifier: s009
+            template:
+              templateInputs:
+                type: Custom
+                spec:
+                  execution:
+                    steps:
+                      - step:
+                          identifier: S009
+                          template:
+                            templateInputs:
+                              type: ShellScriptProvision
+                              spec:
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: <+input>
+  projectIdentifier: TestProject
+  orgIdentifier: default
