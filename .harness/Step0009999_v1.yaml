@@ -22,5 +22,5 @@ template:
           value: <+input>
         - name: var3
           type: String
-          value: <+input>
+          value: "10"
     timeout: <+input>
