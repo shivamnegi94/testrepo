@@ -7,7 +7,6 @@ template:
   orgIdentifier: default
   tags: {}
   spec:
-    timeout: <+input>
     type: ShellScriptProvision
     spec:
       source:
@@ -15,3 +14,4 @@ template:
         spec:
           script: <+input>
       environmentVariables: []
+    timeout: 10m
