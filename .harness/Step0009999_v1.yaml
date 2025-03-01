@@ -17,4 +17,4 @@ template:
         - name: var1
           type: String
           value: <+input>
-    timeout: 10m
+    timeout: <+input>
