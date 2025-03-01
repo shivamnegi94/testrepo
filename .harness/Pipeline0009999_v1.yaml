@@ -1,0 +1,32 @@
+template:
+  name: Pipeline0009999
+  identifier: Pipeline0009999
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: s009
+          identifier: s009
+          tags: {}
+          template:
+            templateRef: Stage0009999
+            versionLabel: v1
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: S009
+                        template:
+                          templateInputs:
+                            type: ShellScriptProvision
+                            spec:
+                              source:
+                                type: Inline
+                                spec:
+                                  script: <+input>
