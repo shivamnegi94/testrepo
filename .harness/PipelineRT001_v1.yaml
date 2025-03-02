@@ -1,0 +1,32 @@
+template:
+  name: PipelineRT001
+  identifier: PipelineRT001
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: S23
+          identifier: S23
+          tags: {}
+          template:
+            templateRef: StageRT001
+            versionLabel: v1
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: S123
+                        template:
+                          templateInputs:
+                            type: ShellScriptProvision
+                            spec:
+                              source:
+                                type: Inline
+                                spec:
+                                  script: <+input>
