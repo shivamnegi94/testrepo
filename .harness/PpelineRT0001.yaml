@@ -20,7 +20,6 @@ pipeline:
                           template:
                             templateInputs:
                               type: ShellScriptProvision
-                              timeout: <+input>
                               spec:
                                 source:
                                   type: Inline
