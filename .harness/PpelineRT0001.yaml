@@ -26,5 +26,9 @@ pipeline:
                                   type: Inline
                                   spec:
                                     script: <+input>
+                                environmentVariables:
+                                  - name: var1
+                                    type: String
+                                    value: <+input>
   projectIdentifier: TestProject
   orgIdentifier: default
