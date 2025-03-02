@@ -1,0 +1,26 @@
+template:
+  name: StageRT001
+  identifier: StageRT001
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S123
+              identifier: S123
+              template:
+                templateRef: StepRT00001
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScriptProvision
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
