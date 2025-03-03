@@ -1,0 +1,20 @@
+template:
+  name: StageRemoteTemplate01
+  identifier: StageRemoteTemplate01
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S1
+              identifier: S1
+              template:
+                templateRef: StepRemoteTemplate01
+                versionLabel: v1
+                gitBranch: main
