@@ -34,4 +34,3 @@ template:
                         value: <+input>
                     outputAlias:
                       key: <+input>
-                    includeInfraSelectors: <+input>
