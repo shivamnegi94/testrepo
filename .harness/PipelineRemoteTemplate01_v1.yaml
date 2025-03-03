@@ -1,0 +1,26 @@
+template:
+  name: PipelineRemoteTemplate01
+  identifier: PipelineRemoteTemplate01
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: St
+          identifier: St
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    name: Step12
+                    identifier: Step12
+                    template:
+                      templateRef: StepRemoteTemplate01
+                      versionLabel: v1
+                      gitBranch: main
+          tags: {}
