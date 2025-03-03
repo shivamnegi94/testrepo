@@ -34,3 +34,4 @@ template:
                                 - name: var1
                                   type: String
                                   value: <+input>
+                            timeout: <+input>
