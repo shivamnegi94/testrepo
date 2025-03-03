@@ -36,5 +36,4 @@ pipeline:
                             value: <+input>
                         outputAlias:
                           key: <+input>
-                        includeInfraSelectors: <+input>
         tags: {}
