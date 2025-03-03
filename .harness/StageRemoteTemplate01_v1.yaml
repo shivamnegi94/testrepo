@@ -28,5 +28,10 @@ template:
                       type: Inline
                       spec:
                         script: <+input>
+                    environmentVariables:
+                      - name: test
+                        type: String
+                        value: <+input>
                     outputAlias:
                       key: <+input>
+                    includeInfraSelectors: <+input>
