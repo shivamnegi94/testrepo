@@ -1,0 +1,43 @@
+template:
+  name: PipelineRemoteTemplate0002
+  identifier: PipelineRemoteTemplate0002
+  versionLabel: v2
+  type: Pipeline
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: ss
+          identifier: ss
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    name: S23
+                    identifier: S23
+                    template:
+                      templateRef: StepRemoteTemplate01
+                      versionLabel: v1
+                      gitBranch: main
+                      templateInputs:
+                        type: ShellScript
+                        timeout: <+input>
+                        spec:
+                          executionTarget: <+input>
+                          delegateSelectors: <+input>
+                          source:
+                            type: Inline
+                            spec:
+                              script: <+input>
+                          environmentVariables:
+                            - name: test
+                              type: String
+                              value: <+input>
+                          outputAlias:
+                            key: <+input>
+                          includeInfraSelectors: <+input>
+          tags: {}
