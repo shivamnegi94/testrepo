@@ -30,3 +30,4 @@ template:
                         script: <+input>
                     outputAlias:
                       key: <+input>
+                    includeInfraSelectors: <+input>
