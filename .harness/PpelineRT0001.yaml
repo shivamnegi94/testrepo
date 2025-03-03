@@ -29,5 +29,6 @@ pipeline:
                                   - name: var1
                                     type: String
                                     value: <+input>
+                              timeout: <+input>
   projectIdentifier: TestProject
   orgIdentifier: default
