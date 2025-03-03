@@ -28,6 +28,7 @@ template:
                         timeout: <+input>
                         spec:
                           executionTarget: <+input>
+                          delegateSelectors: <+input>
                           source:
                             type: Inline
                             spec:
