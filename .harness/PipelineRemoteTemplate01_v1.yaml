@@ -23,4 +23,15 @@ template:
                       templateRef: StepRemoteTemplate01
                       versionLabel: v1
                       gitBranch: main
+                      templateInputs:
+                        type: ShellScript
+                        timeout: <+input>
+                        spec:
+                          executionTarget: <+input>
+                          source:
+                            type: Inline
+                            spec:
+                              script: <+input>
+                          outputAlias:
+                            key: <+input>
           tags: {}
