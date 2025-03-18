@@ -20,7 +20,6 @@ template:
                 gitBranch: main
                 templateInputs:
                   type: ShellScript
-                  timeout: <+input>
                   spec:
                     executionTarget: <+input>
                     delegateSelectors: <+input>
@@ -34,3 +33,4 @@ template:
                         value: <+input>
                     outputAlias:
                       key: <+input>
+                  timeout: <+input>
