@@ -26,6 +26,10 @@ pipeline:
                       spec:
                         executionTarget: <+input>
                         delegateSelectors: <+input>
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
                         environmentVariables:
                           - name: test
                             type: String
