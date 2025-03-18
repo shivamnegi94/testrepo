@@ -38,5 +38,4 @@ template:
                               value: <+input>
                           outputAlias:
                             key: <+input>
-                        timeout: <+input>
           tags: {}
