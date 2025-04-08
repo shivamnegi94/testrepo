@@ -1,0 +1,22 @@
+template:
+  name: SGRemote
+  identifier: SGRemote
+  versionLabel: v1
+  type: StepGroup
+  tags: {}
+  spec:
+    stageType: Custom
+    steps:
+      - step:
+          name: S12
+          identifier: S12
+          template:
+            templateRef: account.StepTV1
+            versionLabel: v1
+            templateInputs:
+              type: ShellScript
+              spec:
+                source:
+                  type: Inline
+                  spec:
+                    script: <+input>
