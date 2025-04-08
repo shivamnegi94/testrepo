@@ -1,0 +1,24 @@
+template:
+  name: StageTemplateRemoteV1
+  identifier: StageTemplateRemoteV1
+  versionLabel: v1
+  type: Stage
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S123
+              identifier: S123
+              template:
+                templateRef: account.StepRemote11
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
