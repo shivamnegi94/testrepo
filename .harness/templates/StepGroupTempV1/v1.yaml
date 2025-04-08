@@ -1,0 +1,22 @@
+template:
+  name: StepGroupTempV1
+  identifier: StepGroupTempV1
+  versionLabel: v1
+  type: StepGroup
+  tags: {}
+  spec:
+    stageType: Custom
+    steps:
+      - step:
+          name: S123
+          identifier: S123
+          template:
+            templateRef: account.StepRemote11
+            versionLabel: v1
+            templateInputs:
+              type: ShellScript
+              spec:
+                source:
+                  type: Inline
+                  spec:
+                    script: <+input>
