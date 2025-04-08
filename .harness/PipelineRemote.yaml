@@ -1,0 +1,29 @@
+pipeline:
+  name: PipelineRemote
+  identifier: PipelineRemote
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S12
+        identifier: S12
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: S123
+                  identifier: S123
+                  template:
+                    templateRef: RemoteStepRefFF
+                    versionLabel: v1
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+        tags: {}
