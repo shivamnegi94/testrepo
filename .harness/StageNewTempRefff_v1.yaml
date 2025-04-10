@@ -1,0 +1,26 @@
+template:
+  name: StageNewTempRefff
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S2223
+              identifier: S2223
+              template:
+                templateRef: StepRemoteRefff
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+  identifier: StageNewTempRefff
+  versionLabel: v1
