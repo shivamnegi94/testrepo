@@ -1,0 +1,26 @@
+template:
+  name: SatgeRefff221111
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S11111
+              identifier: S11111
+              template:
+                templateRef: StepRemoteRefff
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+  identifier: SatgeRefff221111
+  versionLabel: v1
