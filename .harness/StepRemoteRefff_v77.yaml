@@ -1,0 +1,21 @@
+template:
+  name: StepRemoteRefff
+  identifier: StepRemoteRefff
+  type: Step
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: <+input>
+      environmentVariables: []
+      outputVariables: []
+  versionLabel: v77
