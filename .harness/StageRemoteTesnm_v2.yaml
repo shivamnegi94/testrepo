@@ -1,0 +1,26 @@
+template:
+  name: StageRemoteTesnm
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S234
+              identifier: S234
+              template:
+                templateRef: RemoteStepRef1
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+  identifier: StageRemoteTesnm
+  versionLabel: v2
