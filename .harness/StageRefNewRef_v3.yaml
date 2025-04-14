@@ -1,0 +1,26 @@
+template:
+  name: StageRefNewRef
+  identifier: StageRefNewRef
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S12
+              identifier: S12
+              template:
+                templateRef: RemoteStepRefFF
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+  versionLabel: v3
