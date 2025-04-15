@@ -1,0 +1,26 @@
+template:
+  name: StageRemoveTTTTTTT
+  identifier: StageRemoveTTTTTTT
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S0012
+              identifier: S0012
+              template:
+                templateRef: RemoteStepRefFF
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+  versionLabel: v2
