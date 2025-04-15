@@ -1,0 +1,26 @@
+template:
+  name: NewTre00000
+  type: Stage
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: S222
+              identifier: S222
+              template:
+                templateRef: RemoteStepRefFF
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  spec:
+                    source:
+                      type: Inline
+                      spec:
+                        script: <+input>
+  identifier: NewTre00000
+  versionLabel: v1
