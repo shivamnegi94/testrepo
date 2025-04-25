@@ -4,7 +4,7 @@ template:
   versionLabel: v1
   type: Pipeline
   projectIdentifier: TestProject
-  orgIdentifier: default
+  orgIdentifier: defaultd
   tags: {}
   spec:
     stages:
