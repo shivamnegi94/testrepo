@@ -21,7 +21,7 @@ template:
                 execution:
                   steps:
                     - step:
-                        identifier: S122
+                        identifier: S1222
                         template:
                           templateInputs:
                             type: ShellScriptProvision
