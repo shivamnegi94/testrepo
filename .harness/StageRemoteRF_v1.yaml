@@ -22,6 +22,9 @@ template:
                     script: <+input>
                 environmentVariables: []
                 outputVariables: []
+                outputAlias:
+                  key: <+input>
+                  scope: Pipeline
               timeout: <+input>
           - step:
               name: S123
