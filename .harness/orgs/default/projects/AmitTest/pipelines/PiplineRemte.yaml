@@ -1,0 +1,27 @@
+pipeline:
+  name: PiplineRemte
+  identifier: PiplineRemte
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S12
+        identifier: S12
+        tags: {}
+        template:
+          templateRef: account.StageTemplateRemoteGit
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
