@@ -1,0 +1,28 @@
+template:
+  name: PipelinRTTTTwf2
+  identifier: PipelinRTTTTwf2
+  versionLabel: v1
+  type: Pipeline
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: as
+          identifier: as
+          tags: {}
+          template:
+            templateRef: account.StageTemplateRemoteGit
+            versionLabel: v1
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: ShellScript_1
+                        type: ShellScript
+                        spec:
+                          source:
+                            type: Inline
+                            spec:
+                              script: <+input>
