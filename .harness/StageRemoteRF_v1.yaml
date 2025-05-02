@@ -23,7 +23,7 @@ template:
                 environmentVariables: []
                 outputVariables: []
                 outputAlias:
-                  key: <+input>
+                  key: pre
                   scope: Pipeline
               timeout: <+input>
           - step:
