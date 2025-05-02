@@ -15,7 +15,7 @@ template:
               identifier: ShellScript_1
               spec:
                 shell: Bash
-                executionTarget: {}
+                executionTarget: <+input>
                 source:
                   type: Inline
                   spec:
