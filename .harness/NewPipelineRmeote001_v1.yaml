@@ -25,8 +25,13 @@ template:
                         template:
                           templateInputs:
                             type: ShellScriptProvision
+                            timeout: <+input>
                             spec:
                               source:
                                 type: Inline
                                 spec:
                                   script: <+input>
+                              environmentVariables:
+                                - name: var123
+                                  type: String
+                                  value: <+input>
