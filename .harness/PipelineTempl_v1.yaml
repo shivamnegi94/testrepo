@@ -31,3 +31,6 @@ template:
                                 type: Inline
                                 spec:
                                   script: <+input>
+                              includeInfraSelectors: <+input>
+                              outputAlias:
+                                key: <+input>
