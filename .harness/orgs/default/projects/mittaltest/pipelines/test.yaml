@@ -1,0 +1,6 @@
+pipeline:
+  name: test
+  identifier: test
+  projectIdentifier: mittaltest
+  orgIdentifier: default
+  tags: {}
