@@ -1,0 +1,48 @@
+pipeline:
+  name: PipelineRemoteTt123
+  identifier: PipelineRemoteTt123
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S1
+        identifier: S1
+        tags: {}
+        template:
+          templateRef: StageRememeoo12
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+    - stage:
+        name: S2
+        identifier: S2
+        tags: {}
+        template:
+          templateRef: StageRememeoo12
+          versionLabel: v2
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
+                      timeout: <+input>
