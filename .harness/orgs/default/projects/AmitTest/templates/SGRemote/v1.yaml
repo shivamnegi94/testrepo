@@ -1,0 +1,17 @@
+template:
+  name: SGRemote
+  identifier: SGRemote
+  versionLabel: v1
+  type: StepGroup
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stageType: Custom
+    steps:
+      - step:
+          type: Wait
+          name: Wait_1
+          identifier: Wait_1
+          spec:
+            duration: 10m
