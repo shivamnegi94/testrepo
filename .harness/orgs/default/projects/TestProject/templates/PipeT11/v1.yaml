@@ -1,0 +1,26 @@
+template:
+  name: PipeT11
+  identifier: PipeT11
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: TestProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: S123
+          identifier: S123
+          tags: {}
+          template:
+            templateRef: StageRememeoo12
+            versionLabel: v2
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - step:
+                        identifier: ShellScript_1
+                        type: ShellScript
+                        timeout: <+input>
