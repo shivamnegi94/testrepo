@@ -1,0 +1,19 @@
+template:
+  name: StageRmoete
+  identifier: StageRmoete
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: AmitTest
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - stepGroup:
+              name: Sg1
+              identifier: Sg1
+              template:
+                templateRef: SGRemote
+                versionLabel: v1
