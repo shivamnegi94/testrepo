@@ -1,37 +1,36 @@
-name: Set Commit Status
+name: Wait for External CI Status
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_dispatch:
 
 jobs:
-  set-status:
+  wait-for-ci:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Poll for External CI Status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          SHA: ${{ github.sha }}
+        run: |
+          for i in {1..30}; do
+            STATUS=$(curl -s -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              https://api.github.com/repos/${OWNER}/${REPO}/commits/${SHA}/status | jq -r '.state')
 
-      - name: Set GitHub Commit Status
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const sha = process.env.GITHUB_SHA;
-            const context = 'ci/build'; // Customize this as per your requirement
-            const state = 'success';    // Can be 'success', 'failure', 'error', or 'pending'
-            const description = 'CI build passed!'; // Short description
-            const target_url = 'https://ci.example.com/build/1234'; // Optional
+            echo "Current Status: $STATUS"
 
-            const response = await github.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: sha,
-              state: state,
-              target_url: target_url,
-              description: description,
-              context: context,
-            });
+            if [ "$STATUS" == "success" ]; then
+              echo "External CI succeeded!"
+              exit 0
+            elif [ "$STATUS" == "failure" ]; then
+              echo "External CI failed!"
+              exit 1
+            fi
 
-            console.log(response);
+            echo "Waiting for CI status... attempt $i"
+            sleep 30
+          done
+
+          echo "Timeout waiting for CI status"
+          exit 1
