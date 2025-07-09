@@ -23,4 +23,4 @@ template:
                       spec:
                         script: <+input>
   identifier: NewTre0000
-  versionLabel: v1
+  versionLabel: v12
