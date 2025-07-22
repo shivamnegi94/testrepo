@@ -22,5 +22,5 @@ template:
           value: <+input>
         - name: vae123
           type: String
-          value: "100"
+          value: "1000"
     timeout: 100m
