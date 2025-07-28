@@ -1,0 +1,16 @@
+apiVersion: harness.io/v1
+kind: Component
+type: service
+identifier: ascas
+name: ascas
+owner: group:account/AAAFF
+orgIdentifier: nisarg
+projectIdentifier: first
+spec:
+  lifecycle: production
+  ownedBy:
+  - group:account/AAAFF
+metadata:
+  description: scsac
+  tags:
+  - bn
