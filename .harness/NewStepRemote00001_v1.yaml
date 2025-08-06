@@ -23,4 +23,4 @@ template:
         - name: vae123
           type: String
           value: "100"
-    timeout: 100m
+    timeout: 100s
