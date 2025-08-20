@@ -30,6 +30,7 @@ pipeline:
                         includeInfraSelectors: <+input>
                         outputAlias:
                           key: <+input>
+                      timeout: <+input>
               - step:
                   name: S12
                   identifier: S12
