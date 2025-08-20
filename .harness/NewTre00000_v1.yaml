@@ -22,5 +22,5 @@ template:
                       type: Inline
                       spec:
                         script: <+input>
-  identifier: NewTre00000
+  identifier: NewTre000002
   versionLabel: v12
