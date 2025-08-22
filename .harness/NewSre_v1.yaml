@@ -15,5 +15,5 @@ template:
               name: S123
               identifier: S12
               template:
-                templateRef: NewStepR1
+                templateRef: NewStepR1c
                 versionLabel: v12223422as
