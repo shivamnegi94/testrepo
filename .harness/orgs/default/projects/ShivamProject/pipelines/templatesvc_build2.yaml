@@ -1,0 +1,101 @@
+pipeline:
+  name: template-svc build2
+  description: Build pipeline for template-svc
+  identifier: templatesvc_build2
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: template-svc
+        build: <+input>
+        prCloneStrategy: MergeCommit
+        sparseCheckout: []
+        sslVerify: true
+        depth: 10
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+        fetchTags: true
+  tags:
+    service: template-svc
+    team: Mercury
+    language: golang
+    source: git
+  variables:
+    - name: TAG_OVERRIDE_VERSION
+      type: String
+      description: ""
+      required: false
+      value: ""
+    - name: MAJOR_VERSION
+      type: String
+      description: ""
+      required: false
+      value: ""
+    - name: DEFAULT_STEP_TIMEOUT
+      type: String
+      description: Default timeout for steps
+      required: false
+      value: 5m
+    - name: BUILD_TIMEOUT
+      type: String
+      description: Timeout for build steps
+      required: false
+      value: 20m
+    - name: TEST_TIMEOUT
+      type: String
+      description: Timeout for test steps
+      required: false
+      value: 15m
+    - name: SERVICE_TYPE
+      type: String
+      description: Type of service (e.g., golang, python, node)
+      required: false
+      value: golang
+    - name: SERVICE_VERSION
+      type: String
+      description: Version of the service (e.g., 1.24)
+      required: false
+      value: "1.24"
+  stages:
+    - stage:
+        identifier: build
+        type: CI
+        name: Build
+        description: ""
+        variables:
+          - name: PLUGIN_DRY_RUN
+            type: String
+            description: ""
+            required: false
+            value: "true"
+          - name: PLUGIN_BUILDX_LOAD
+            type: String
+            description: ""
+            required: false
+            value: "true"
+        spec:
+          caching:
+            enabled: false
+            paths: []
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: xlarge
+          buildIntelligence:
+            enabled: false
+          execution:
+            steps:
+              - step:
+                  name: S1234
+                  identifier: S1234
+                  template:
+                    templateRef: account.IDAnywhere_GetBearer
+                    versionLabel: Version1
