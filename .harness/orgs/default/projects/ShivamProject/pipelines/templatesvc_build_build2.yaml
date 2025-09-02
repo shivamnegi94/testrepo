@@ -1,0 +1,405 @@
+pipeline:
+  name: template svc build build
+  description: Build pipeline for template-svc
+  identifier: templatesvc_build_build2
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Github
+        repoName: template-svc
+        build: <+input>
+        prCloneStrategy: MergeCommit
+        sparseCheckout: []
+        sslVerify: true
+        depth: 10
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+        fetchTags: true
+  tags:
+    service: template-svc
+    team: Mercury
+    language: golang
+    source: git
+  variables:
+    - name: TAG_OVERRIDE_VERSION
+      type: String
+      description: ""
+      required: false
+      value: ""
+    - name: MAJOR_VERSION
+      type: String
+      description: ""
+      required: false
+      value: ""
+    - name: DEFAULT_STEP_TIMEOUT
+      type: String
+      description: Default timeout for steps
+      required: false
+      value: 5m
+    - name: BUILD_TIMEOUT
+      type: String
+      description: Timeout for build steps
+      required: false
+      value: 20m
+    - name: TEST_TIMEOUT
+      type: String
+      description: Timeout for test steps
+      required: false
+      value: 15m
+    - name: SERVICE_TYPE
+      type: String
+      description: Type of service (e.g., golang, python, node)
+      required: false
+      value: golang
+    - name: SERVICE_VERSION
+      type: String
+      description: Version of the service (e.g., 1.24)
+      required: false
+      value: "1.24"
+  stages:
+    - stage:
+        identifier: build
+        type: CI
+        name: Build
+        description: ""
+        variables:
+          - name: PLUGIN_DRY_RUN
+            type: String
+            description: ""
+            required: false
+            value: "true"
+          - name: PLUGIN_BUILDX_LOAD
+            type: String
+            description: ""
+            required: false
+            value: "true"
+        spec:
+          caching:
+            enabled: false
+            paths: []
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: xlarge
+          buildIntelligence:
+            enabled: false
+          execution:
+            steps:
+              - step:
+                  name: GitHub Notice Initialization
+                  identifier: GitHub_Notice_Initialization
+                  template:
+                    templateRef: org.GitHub_Notice_Initialization
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          CONTEXTS: docker_build_dependencies,docker_build,docker_test
+                          IS_CONTAINER: "false"
+                contextType: Pipeline
+              - step:
+                  name: Setup Common Variables
+                  identifier: vars
+                  template:
+                    templateRef: org.Setup_Common_Variables
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          SERVICE_TYPE: <+pipeline.variables.SERVICE_TYPE>
+                          SERVICE_VERSION: <+pipeline.variables.SERVICE_VERSION>
+                          GITHUB_TOKEN: <+secrets.getValue("org.GITHUB_CI_TOKEN")>
+                          GCR_PULL_SERVICE_KEY: <+secrets.getValue("org.hashicorpvault://vaultprod/cloudops/manual/circleci/shared/common#GCR_PULL_SERVICE_KEY")>
+              - step:
+                  name: Validate Commit Message
+                  identifier: Validate_Commit
+                  template:
+                    templateRef: org.Validate_Commit
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          COMMIT_MESSAGE: <+execution.steps.vars.output.outputVariables.GIT_COMMIT_MESSAGE>
+              - step:
+                  name: Generate Version
+                  identifier: Generate_Version
+                  template:
+                    templateRef: org.Generate_Version
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          DEFAULT_TAG: 0.0.0
+                          LATEST_TAG: <+execution.steps.vars.output.outputVariables.GIT_LATEST_TAG>
+                          TAG_VERSION_OVERRIDE: <+pipeline.variables.TAG_OVERRIDE_VERSION>
+                          MAJOR_VERSION_OVERRIDE: <+pipeline.variables.MAJOR_VERSION>
+                          GH_ORG: <+execution.steps.vars.output.outputVariables.GIT_REPO_ORG>
+                          GH_REPO_NAME: <+execution.steps.vars.output.outputVariables.GIT_REPO_NAME>
+                          GH_TOKEN: <+secrets.getValue("org.hashicorpvault://vaultprod/cloudops/manual/circleci/shared/common#GITHUB_CI_TOKEN")>
+                          COMMIT_SHA_SHORT: <+execution.steps.vars.output.outputVariables.GIT_COMMIT_SHA_SHORT>
+                          BUMP_TYPE_IN: <+execution.steps.Validate_Commit.output.outputVariables.BUMP_TYPE>
+                          COMMIT_TYPE_IN: <+execution.steps.Validate_Commit.output.outputVariables.COMMIT_TYPE>
+                          COMMIT_SCOPE_IN: <+execution.steps.Validate_Commit.output.outputVariables.SANITIZED_SCOPE>
+                contextType: Pipeline
+              - parallel:
+                  - stepGroup:
+                      identifier: build_and_test
+                      name: Build and Test
+                      steps:
+                        - stepGroup:
+                            identifier: Dependencies
+                            name: Dependencies
+                            steps:
+                              - step:
+                                  identifier: docker_build_dependencies
+                                  type: BuildAndPushGAR
+                                  name: docker build dependencies
+                                  spec:
+                                    connectorRef: account.GCR
+                                    host: <+execution.steps.vars.output.outputVariables.DOCKER_HOST>
+                                    projectID: <+execution.steps.vars.output.outputVariables.DOCKER_REPO>
+                                    imageName: template
+                                    tags:
+                                      - dependencies
+                                    caching: true
+                                    target: builder
+                                    baseImageConnectorRefs:
+                                      - account.DockerhubCache
+                                    envDockerSecrets:
+                                      GITHUB_TOKEN: <+secrets.getValue("org.GITHUB_CI_TOKEN")>
+                                    buildArgs:
+                                      REGISTRY: <+execution.steps.vars.output.outputVariables.DOCKER_REGISTRY_MIRROR>
+                              - step:
+                                  name: GitHub Notice Dependencies
+                                  identifier: GitHub_Notice_Dependencies
+                                  template:
+                                    templateRef: org.GitHub_Notice
+                                    versionLabel: v0.0.1
+                                    gitBranch: main
+                                    templateInputs:
+                                      type: Run
+                                      spec:
+                                        envVariables:
+                                          STEP_ID: execution.steps.build_and_test.steps.Dependencies.steps.docker_build_dependencies
+                                          CONTEXT: docker_build_dependencies
+                        - parallel:
+                            - stepGroup:
+                                identifier: Build
+                                name: Build
+                                steps:
+                                  - step:
+                                      identifier: docker_build
+                                      type: BuildAndPushGAR
+                                      name: docker build
+                                      spec:
+                                        connectorRef: account.GCR
+                                        host: <+execution.steps.vars.output.outputVariables.DOCKER_HOST>
+                                        projectID: <+execution.steps.vars.output.outputVariables.DOCKER_REPO>
+                                        imageName: template
+                                        tags:
+                                          - <+execution.steps.vars.output.outputVariables.COMMIT>
+                                        caching: true
+                                        baseImageConnectorRefs:
+                                          - account.DockerhubCache
+                                        envDockerSecrets:
+                                          GITHUB_TOKEN: <+secrets.getValue("org.GITHUB_CI_TOKEN")>
+                                        buildArgs:
+                                          REGISTRY: <+execution.steps.vars.output.outputVariables.DOCKER_REGISTRY_MIRROR>
+                                      timeout: <+pipeline.variables.BUILD_TIMEOUT>
+                                  - step:
+                                      name: GitHub Notice
+                                      identifier: GitHub_Notice_build
+                                      template:
+                                        templateRef: org.GitHub_Notice
+                                        versionLabel: v0.0.1
+                                        gitBranch: main
+                                        templateInputs:
+                                          type: Run
+                                          spec:
+                                            envVariables:
+                                              STEP_ID: execution.steps.build_and_test.steps.Build.steps.docker_build
+                                              CONTEXT: docker_build
+                            - stepGroup:
+                                identifier: Test
+                                name: Unit Tests
+                                steps:
+                                  - step:
+                                      identifier: docker_test
+                                      type: BuildAndPushGAR
+                                      name: docker test
+                                      spec:
+                                        connectorRef: account.GCR
+                                        host: <+execution.steps.vars.output.outputVariables.DOCKER_HOST>
+                                        projectID: <+execution.steps.vars.output.outputVariables.DOCKER_REPO>
+                                        imageName: template
+                                        tags:
+                                          - tests
+                                        caching: true
+                                        target: tests
+                                        baseImageConnectorRefs:
+                                          - account.DockerhubCache
+                                        envDockerSecrets:
+                                          GITHUB_TOKEN: <+secrets.getValue("org.GITHUB_CI_TOKEN")>
+                                        buildArgs:
+                                          REGISTRY: <+execution.steps.vars.output.outputVariables.DOCKER_REGISTRY_MIRROR>
+                                      timeout: <+pipeline.variables.TEST_TIMEOUT>
+                                  - step:
+                                      identifier: upload_test_results
+                                      type: Run
+                                      name: Upload Unit Test Results
+                                      spec:
+                                        connectorRef: account.GCR
+                                        image: <+execution.steps.vars.output.outputVariables.DOCKER_REGISTRY_GCR>/template:tests
+                                        shell: Bash
+                                        command: cp -r /app/harness/coverage /harness/coverage
+                                        reports:
+                                          type: JUnit
+                                          spec:
+                                            paths:
+                                              - coverage/**.xml
+                                  - step:
+                                      name: GitHub Notice Unit Tests
+                                      identifier: GitHub_Notice_Tests
+                                      template:
+                                        templateRef: org.GitHub_Notice
+                                        versionLabel: v0.0.1
+                                        gitBranch: main
+                                        templateInputs:
+                                          type: Run
+                                          spec:
+                                            envVariables:
+                                              STEP_ID: execution.steps.build_and_test.steps.Test.steps.docker_test
+                                              CONTEXT: docker_test
+                        - stepGroup:
+                            name: Aquatrivy
+                            identifier: Aquatrivy
+                            template:
+                              templateRef: org.aquatrivy
+                              versionLabel: v0.0.1
+                              gitBranch: main
+                              templateInputs:
+                                variables:
+                                  - name: OUTER_STEP_GROUP
+                                    type: String
+                                    value: build_and_test
+                                  - name: IMAGE_NAME
+                                    type: String
+                                    value: <+execution.steps.vars.output.outputVariables.DOCKER_REPO>/template
+                                  - name: IMAGE_TAG
+                                    type: String
+                                    value: <+execution.steps.vars.output.outputVariables.GIT_COMMIT_SHA>
+                  - stepGroup:
+                      name: Gitleaks
+                      identifier: gitleaks
+                      template:
+                        templateRef: org.gitleaks
+                        versionLabel: v0.0.1
+                        gitBranch: main
+                        templateInputs:
+                          variables:
+                            - name: REPO_NAME
+                              type: String
+                              value: <+execution.steps.vars.output.outputVariables.GIT_REPO_NAME>
+                            - name: REPO_BRANCH
+                              type: String
+                              value: <+execution.steps.vars.output.outputVariables.GIT_SOURCE_BRANCH>
+                  - stepGroup:
+                      name: Snyk
+                      identifier: Snyk_Run_Template
+                      template:
+                        templateRef: org.Snyk_Template
+                        versionLabel: v0.0.1
+                        gitBranch: main
+                        templateInputs:
+                          variables:
+                            - name: REPO_NAME
+                              type: String
+                              value: <+execution.steps.vars.output.outputVariables.GIT_REPO_NAME>
+                            - name: REPO_TARGET
+                              type: String
+                              value: <+execution.steps.vars.output.outputVariables.GIT_SOURCE_BRANCH>
+                            - name: SERVICE_TYPE
+                              type: String
+                              value: <+execution.steps.vars.output.outputVariables.SERVICE_TYPE>
+                            - name: SNYK_IMAGE
+                              type: String
+                              value: <+execution.steps.vars.output.outputVariables.SNYK_IMAGE>
+              - step:
+                  name: Push Docker and Github Tags
+                  identifier: docker_push
+                  template:
+                    templateRef: org.docker_push
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          GCR_PUSH_SERVICE_KEY: <+secrets.getValue("org.hashicorpvault://vaultprod/cloudops/manual/circleci/shared/common#GCR_PUSH_SERVICE_KEY")>
+                          IMAGE_NAME: <+execution.steps.vars.output.outputVariables.DOCKER_REPO>/<+execution.steps.vars.output.outputVariables.GIT_REPO_NAME>
+                          IMAGE_TAG: <+execution.steps.vars.output.outputVariables.GIT_COMMIT_SHA>
+              - step:
+                  name: GitHub Notice Push Docker Image
+                  identifier: GitHub_Notice_Docker_Push
+                  template:
+                    templateRef: org.GitHub_Notice
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          STEP_ID: execution.steps.docker_push
+                          CONTEXT: docker_push
+              - step:
+                  name: GitHub Tag and Release
+                  identifier: autoincrement_tag
+                  template:
+                    templateRef: org.autoincrement_tag
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          GCR_REPO_NAME: <+execution.steps.vars.output.outputVariables.DOCKER_REPO>
+                          GCR_SERVICE_NAME: <+execution.steps.vars.output.outputVariables.GIT_REPO_NAME>
+                          GCR_PUSH_SERVICE_KEY: <+secrets.getValue("org.hashicorpvault://vaultprod/cloudops/manual/circleci/shared/common#GCR_PUSH_SERVICE_KEY")>
+                          GCR_SA: <+secrets.getValue("org.hashicorpvault://vaultprod/cloudops/manual/circleci/shared/common#GCR_SA")>
+                          GH_ORG: <+execution.steps.vars.output.outputVariables.GIT_REPO_ORG>
+                          GITHUB_TOKEN: <+secrets.getValue("org.GITHUB_CI_TOKEN")>
+                          GIT_REPO: <+execution.steps.vars.output.outputVariables.GIT_REPO_NAME>
+                          COMMIT_SHA: <+execution.steps.vars.output.outputVariables.GIT_COMMIT_SHA>
+                          BRANCH_NAME: <+execution.steps.vars.output.outputVariables.GIT_SOURCE_BRANCH>
+                          GENERATED_FULL_VERSION: <+execution.steps.Generate_Version.output.outputVariables.GENERATED_VERSION>
+                  when:
+                    stageStatus: Success
+              - step:
+                  name: GitHub Notice Tag and Release
+                  identifier: GitHub_Notice_Autoincrement_Tag
+                  template:
+                    templateRef: org.GitHub_Notice
+                    versionLabel: v0.0.1
+                    gitBranch: main
+                    templateInputs:
+                      type: Run
+                      spec:
+                        envVariables:
+                          STEP_ID: execution.steps.autoincrement_tag
+                          CONTEXT: autoincrement_tag
