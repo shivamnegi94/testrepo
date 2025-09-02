@@ -1,7 +1,7 @@
 pipeline:
-  name: template-svc build
-  description: Build pipeline for template-svc
-  identifier: templatesvc_build
+  name: template build
+  description: Build pipeline for template
+  identifier: template_build
   projectIdentifier: ShivamProject
   orgIdentifier: default
   properties:
