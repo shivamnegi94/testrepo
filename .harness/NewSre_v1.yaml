@@ -13,7 +13,7 @@ template:
         steps:
           - step:
               name: S123
-              identifier: S12
+              identifier: S122
               template:
                 templateRef: NewStepR1
                 versionLabel: v12223422as
