@@ -1,0 +1,19 @@
+template:
+  name: StageTestRemote2
+  identifier: StageTestRemote2
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: Test123
+              identifier: Test123
+              template:
+                templateRef: StepRemoteTemp
+                versionLabel: v1
