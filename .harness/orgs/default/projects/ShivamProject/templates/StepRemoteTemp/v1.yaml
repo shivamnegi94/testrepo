@@ -1,0 +1,21 @@
+template:
+  name: StepRemoteTemp
+  identifier: StepRemoteTemp
+  versionLabel: v1
+  type: Step
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo "Test"
+      environmentVariables: []
+      outputVariables: []
