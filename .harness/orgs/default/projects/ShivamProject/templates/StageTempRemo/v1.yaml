@@ -1,0 +1,19 @@
+template:
+  name: StageTempRemo
+  identifier: StageTempRemo
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: TestTemp
+              identifier: TestTemp
+              template:
+                templateRef: StepRemoteTemp
+                versionLabel: v1
