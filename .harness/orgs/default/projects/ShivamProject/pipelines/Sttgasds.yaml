@@ -1,0 +1,15 @@
+pipeline:
+  name: Sttgasds
+  identifier: Sttgasds
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: S123
+        identifier: S123
+        tags: {}
+        template:
+          templateRef: StageTempRemo
+          versionLabel: v1
+          gitBranch: main
