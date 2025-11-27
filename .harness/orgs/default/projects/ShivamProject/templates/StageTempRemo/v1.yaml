@@ -17,3 +17,9 @@ template:
               template:
                 templateRef: StepRemoteTemp
                 versionLabel: v1
+    variables:
+      - name: v1
+        type: String
+        description: ""
+        required: false
+        value: <+input>
