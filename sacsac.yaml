@@ -1,4 +1,4 @@
-apiVersion: harness.io/v1
+sapiVersion: harness.io/v1
 kind: Component
 type: service
 identifier: ascas
@@ -13,4 +13,4 @@ spec:
 metadata:
   description: scsac
   tags:
-  - bnysa
+  - bnysas
