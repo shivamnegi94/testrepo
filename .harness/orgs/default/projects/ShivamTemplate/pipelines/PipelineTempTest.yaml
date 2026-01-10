@@ -5,5 +5,10 @@ pipeline:
   template:
     templateRef: TestPipelineRemote
     versionLabel: v1
+    templateInputs:
+      variables:
+        - name: s2
+          type: String
+          value: <+input>
   projectIdentifier: ShivamTemplate
   orgIdentifier: default
