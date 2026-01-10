@@ -1,0 +1,9 @@
+pipeline:
+  name: DevelopPipelineT2
+  identifier: DevelopPipelineT2
+  tags: {}
+  template:
+    templateRef: PipelineT2Rem2
+    versionLabel: v1
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
