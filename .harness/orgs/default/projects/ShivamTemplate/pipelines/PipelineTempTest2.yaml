@@ -1,0 +1,9 @@
+pipeline:
+  name: PipelineTempTest2
+  identifier: PipelineTempTest2
+  tags: {}
+  template:
+    templateRef: TestPipelineRemote
+    versionLabel: v1
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
