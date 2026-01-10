@@ -6,8 +6,26 @@ pipeline:
     templateRef: TestPipelineRemote
     versionLabel: v1
     templateInputs:
+      stages:
+        - stage:
+            identifier: S12
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - step:
+                      identifier: ShellScript_1
+                      type: ShellScript
+                      spec:
+                        source:
+                          type: Inline
+                          spec:
+                            script: <+input>
       variables:
         - name: s2
+          type: String
+          value: <+input>
+        - name: S123
           type: String
           value: <+input>
   projectIdentifier: ShivamTemplate
