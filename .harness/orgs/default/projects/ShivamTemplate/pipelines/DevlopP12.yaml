@@ -1,0 +1,9 @@
+pipeline:
+  name: DevlopP12
+  identifier: DevlopP12
+  tags: {}
+  template:
+    templateRef: PipelineT2Rem2
+    versionLabel: v1
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
