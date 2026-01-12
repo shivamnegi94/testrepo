@@ -1,0 +1,9 @@
+pipeline:
+  name: DevelopRemote0001
+  identifier: DevelopRemote0001
+  tags: {}
+  template:
+    templateRef: PipelineRemoteTest12
+    versionLabel: v1
+  projectIdentifier: ShivamTemplate
+  orgIdentifier: default
