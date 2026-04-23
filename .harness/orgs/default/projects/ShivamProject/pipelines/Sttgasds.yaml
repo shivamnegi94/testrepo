@@ -13,3 +13,9 @@ pipeline:
           templateRef: StageTempRemo
           versionLabel: v1
           gitBranch: main
+          templateInputs:
+            type: Custom
+            variables:
+              - name: v1
+                type: String
+                value: <+input>
