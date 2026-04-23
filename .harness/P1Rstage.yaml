@@ -21,7 +21,7 @@ template:
                 execution:
                   steps:
                     - step:
-                        identifier: S123
+                        identifier: S123s
                         template:
                           templateInputs:
                             type: ShellScript
