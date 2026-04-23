@@ -16,7 +16,7 @@ template:
               identifier: S12
               template:
                 templateRef: NewStepRemote00001
-                versionLabel: v1
+                versionLabel: v12
                 templateInputs:
                   type: ShellScriptProvision
                   spec:
