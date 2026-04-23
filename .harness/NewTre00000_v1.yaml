@@ -13,7 +13,7 @@ template:
               name: S222
               identifier: S222
               template:
-                templateRef: RemoteStepRefFF
+                templateRef: RemoteStepRefFFf
                 versionLabel: v1
                 templateInputs:
                   type: ShellScript
