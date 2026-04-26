@@ -25,7 +25,7 @@ template:
                       spec:
                         script: <+input>
                     environmentVariables:
-                      - name: var123
+                      - name: var123d
                         type: String
                         value: <+input>
                       - name: var12345
