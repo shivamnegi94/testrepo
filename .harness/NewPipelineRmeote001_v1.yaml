@@ -24,7 +24,7 @@ template:
                         identifier: S1222
                         template:
                           templateInputs:
-                            type: ShellScriptProvision
+                            type: ShellScriptProvisions
                             spec:
                               source:
                                 type: Inline
