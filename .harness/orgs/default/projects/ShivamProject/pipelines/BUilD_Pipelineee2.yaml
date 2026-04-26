@@ -1,0 +1,46 @@
+pipeline:
+  name: BUilD Pipelineee
+  identifier: BUilD_Pipelineee2
+  projectIdentifier: ShivamProject
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: <+input>
+        build: <+input>
+  stages:
+    - stage:
+        name: BUild
+        identifier: BUild
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.TestAbhinav27Nov
+              namespace: harness
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  name: S1
+                  identifier: S1
+                  template:
+                    templateRef: account.Stepksdds
+                    versionLabel: v1
+              - step:
+                  name: S2
+                  identifier: S2
+                  template:
+                    templateRef: account.cirun
+                    versionLabel: v1
