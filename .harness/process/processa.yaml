@@ -1,0 +1,19 @@
+process:
+  id: processa
+  name: processa
+  description: ""
+  phases:
+    - phase:
+        id: hghghg
+        name: hghghg
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: test_script_notify_activity1
+            id: test_script_notify_activity1
+            name: Test Notify Activity3
+            description: Simple manual step with no inputs
+            depends-on: []
