@@ -1,0 +1,33 @@
+template:
+  name: Pipelineremoteeee0000001
+  identifier: Pipelineremoteeee0000001
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: DoNotDelete_Brooke2
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: S123444
+          identifier: S123444
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: ShellScript
+                    name: ShellScript_1
+                    identifier: ShellScript_1
+                    spec:
+                      shell: Bash
+                      executionTarget: {}
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo "Hello"
+                      environmentVariables: []
+                      outputVariables: []
+                    timeout: 10m
+          tags: {}
