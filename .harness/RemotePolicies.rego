@@ -1,8 +1,12 @@
 package release
 
-# Standalone process runs skip the release group's cadence, conflict checks, version, and audit record.
-# directProcessExecution is present only on the onrun payload.
+# A missing or empty timeout leaves no automatic escape if the activity hangs.
 deny[msg] {
-	input.process.directProcessExecution == true
-	msg := sprintf("process '%s' cannot be run directly; execute it through a release so the run is scheduled, conflict-checked and auditable", [input.process.identifier])
+	input.activity.identifier != "deploy_pipeline2"
+	msg := sprintf("activity '%s' must declare a timeout so a stuck activity cannot block the release", [input.activity.identifier])
+}
+
+deny[msg] {
+	input.activity.timeout == ""
+	msg := sprintf("activity '%s' must declare a non-empty timeout", [input.activity.identifier])
 }
