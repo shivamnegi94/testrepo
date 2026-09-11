@@ -1,0 +1,19 @@
+process:
+  id: dffffd1234355
+  name: dffffd1234355
+  description: ""
+  phases:
+    - phase:
+        id: fffdfdfd
+        name: fffdfdfd
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: RemoteActivity1234
+            id: RemoteActivity1234
+            name: RemoteActivity1234
+            description: ""
+            depends-on: []
