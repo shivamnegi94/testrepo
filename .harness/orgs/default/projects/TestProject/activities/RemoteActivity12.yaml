@@ -1,0 +1,17 @@
+activity:
+  description: ""
+  id: RemoteActivity12
+  inputs: {}
+  name: RemoteActivity12
+  outputs: {}
+  pipeline:
+    pipeline: default/TestProject/ShellNew
+    inputSet:
+      pipeline: {}
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
