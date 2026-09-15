@@ -1,0 +1,17 @@
+activity:
+  description: ""
+  id: PipelineActivity
+  inputs: {}
+  name: PipelineActivity
+  outputs: {}
+  pipeline:
+    pipeline: default/GitXProject/TestP12
+    inputSet:
+      pipeline: {}
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
