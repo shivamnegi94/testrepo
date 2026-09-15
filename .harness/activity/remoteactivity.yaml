@@ -1,0 +1,17 @@
+activity:
+  description: ""
+  id: RemoteActivity
+  inputs: {}
+  name: RemoteActivity
+  outputs: {}
+  pipeline:
+    pipeline: default/fmeonboarding/ShellPipeline
+    inputSet:
+      pipeline: {}
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
