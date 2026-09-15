@@ -1,0 +1,19 @@
+process:
+  id: ProcessTest
+  name: ProcessTest
+  description: ""
+  phases:
+    - phase:
+        id: Phase1
+        name: Phase1
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: PipelineActivity
+            id: PipelineActivity
+            name: PipelineActivity
+            description: ""
+            depends-on: []
