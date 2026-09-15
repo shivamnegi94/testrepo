@@ -1,0 +1,19 @@
+process:
+  id: ProcessRemote2
+  name: ProcessRemote2
+  description: ""
+  phases:
+    - phase:
+        id: Phase1
+        name: Phase1
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: ActivityRemote2
+            id: ActivityRemote2
+            name: ActivityRemote2
+            description: ""
+            depends-on: []
