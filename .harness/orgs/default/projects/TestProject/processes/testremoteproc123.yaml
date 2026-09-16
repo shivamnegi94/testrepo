@@ -10,7 +10,7 @@ process:
         owners:
           - account._account_all_users
         depends-on: []
-        outputs: {}
+        outputs: {"var1": "test"}
         activities:
           - activity: RemoteActivity1234
             id: RemoteActivity1234
