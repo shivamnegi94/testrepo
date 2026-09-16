@@ -3,7 +3,7 @@ activity:
   id: RemoteActivity1234
   inputs: {}
   name: RemoteActivity1234
-  outputs: {}
+  outputs: {"var": "test"}
   pipeline:
     pipeline: default/TestProject/ShellNew
     inputSet:
