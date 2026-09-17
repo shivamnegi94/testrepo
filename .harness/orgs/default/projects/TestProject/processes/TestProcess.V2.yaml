@@ -1,0 +1,19 @@
+process:
+  id: TestProcessV2
+  name: TestProcessV2
+  description: ""
+  phases:
+    - phase:
+        id: P1
+        name: P1
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: RemoteActivityTest2
+            id: RemoteActivityTest2
+            name: RemoteActivityTest2
+            description: ""
+            depends-on: []
