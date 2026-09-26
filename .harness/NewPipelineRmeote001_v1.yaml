@@ -27,6 +27,6 @@ template:
                             type: ShellScriptProvision
                             spec:
                               source:
-                                type: Inline
+                                type: Inlinee
                                 spec:
                                   script: <+input>
