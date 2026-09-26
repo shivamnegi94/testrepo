@@ -28,7 +28,7 @@ template:
                       - name: var123
                         type: String
                         value: <+input>
-                      - name: var12345
+                      - name: var123456
                         type: String
                         value: <+input>
                   timeout: <+input>
