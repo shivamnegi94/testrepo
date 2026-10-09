@@ -1,0 +1,17 @@
+activity:
+  description: ""
+  id: ActivityRemotP12
+  inputs: {}
+  name: ActivityRemotP12
+  outputs: {}
+  pipeline:
+    pipeline: Ng_Pipelines_K8s_Organisations/DoNotDelete_Brooke2/triggertest
+    inputSet:
+      pipeline: {}
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
