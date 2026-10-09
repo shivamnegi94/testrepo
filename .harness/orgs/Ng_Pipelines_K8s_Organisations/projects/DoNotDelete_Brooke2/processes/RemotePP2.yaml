@@ -1,0 +1,19 @@
+process:
+  id: RemotePP2
+  name: RemotePP2
+  description: ""
+  phases:
+    - phase:
+        id: p12
+        name: p12
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: Deploy
+            id: Deploy
+            name: Deploy
+            description: ""
+            depends-on: []
