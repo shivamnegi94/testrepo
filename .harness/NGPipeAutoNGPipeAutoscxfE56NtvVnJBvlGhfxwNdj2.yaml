@@ -1,0 +1,79 @@
+pipeline:
+  name: multiSvcSingleStageWithPRB
+  identifier: NGPipeAutoNGPipeAutoscxfE56NtvVnJBvlGhfxwNdj2
+  projectIdentifier: DoNotDelete_Brooke2
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  stages:
+    - stage:
+        name: d1
+        identifier: d1
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          services:
+            values:
+              - serviceRef: svc0
+              - serviceRef: svc1
+            metadata:
+              parallel: true
+          environment:
+            environmentRef: env0
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: infra1
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_0
+                  identifier: ShellScript_0
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: exit 1
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+                  when:
+                    stageStatus: Success
+                    condition: <+service.name> == "svc0"
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    source:
+                      type: Inline
+                      spec:
+                        script: exit 1
+                    environmentVariables: []
+                    outputVariables: []
+                    executionTarget: {}
+                  timeout: 10m
+                  when:
+                    stageStatus: Success
+                    condition: <+service.name> == "svc1"
+            rollbackSteps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_RB
+                  identifier: ShellScript_RB
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: sleep 5m
+                  timeout: 10m
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: PipelineRollback
