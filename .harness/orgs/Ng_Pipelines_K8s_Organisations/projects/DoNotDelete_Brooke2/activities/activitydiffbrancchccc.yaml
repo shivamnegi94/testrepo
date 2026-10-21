@@ -1,0 +1,33 @@
+activity:
+  description: ""
+  id: ActivityDiffBrancchccc
+  inputs: {}
+  name: ActivityDiffBrancchccc
+  outputs: {}
+  pipeline:
+    pipeline: Ng_Pipelines_K8s_Organisations/DoNotDelete_Brooke2/triggertest
+    inputSet:
+      name: ""
+      identifier: ""
+      orgIdentifier: Ng_Pipelines_K8s_Organisations
+      projectIdentifier: DoNotDelete_Brooke2
+      repo: ""
+      branch: ""
+      connectorRef: ""
+      repoName: ""
+      storeType: INLINE
+      filePath: ""
+      provider:
+        type: Harness
+        titleLabelKey: common.harnessCodeRepo
+        descriptionLabelKey: common.harnessCodeRepoInfo
+        icon: code
+        size: 20
+        disabled: false
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
