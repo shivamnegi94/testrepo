@@ -1,0 +1,29 @@
+activity:
+  description: ""
+  id: TestRemoteActivityProd1
+  inputs: {}
+  name: TestRemoteActivityProd1
+  outputs: {}
+  pipeline:
+    pipeline: default/CD_Triggers_Automation/triggerNexus3
+    inputSet:
+      pipeline:
+        identifier: triggerNexus3
+        properties:
+          ci:
+            codebase:
+              build:
+                type: branch
+                spec:
+                  branch: master
+        variables:
+          - name: tag
+            type: String
+            value: v12
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
