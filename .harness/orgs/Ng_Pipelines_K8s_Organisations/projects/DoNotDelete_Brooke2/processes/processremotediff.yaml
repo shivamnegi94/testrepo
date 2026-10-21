@@ -17,4 +17,3 @@ process:
             name: ActivityRemoteFF
             description: ""
             depends-on: []
-            gitBranch: TestNewBranch0000
