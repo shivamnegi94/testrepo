@@ -1,0 +1,19 @@
+process:
+  id: ProcessP11Remtt
+  name: ProcessP11Remtt
+  description: ""
+  phases:
+    - phase:
+        id: P123
+        name: P123
+        description: ""
+        owners:
+          - account._account_all_users
+        depends-on: []
+        outputs: {}
+        activities:
+          - activity: ActivityMain
+            id: ActivityMain
+            name: ActivityMain
+            description: ""
+            depends-on: []
