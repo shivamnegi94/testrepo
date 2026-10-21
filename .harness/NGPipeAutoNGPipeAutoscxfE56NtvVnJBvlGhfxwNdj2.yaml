@@ -47,13 +47,13 @@ pipeline:
                   identifier: ShellScript_1
                   spec:
                     shell: Bash
-                    onDelegate: true
                     source:
                       type: Inline
                       spec:
-                        script: exit 0
+                        script: exit 1
                     environmentVariables: []
                     outputVariables: []
+                    executionTarget: {}
                   timeout: 10m
                   when:
                     stageStatus: Success
