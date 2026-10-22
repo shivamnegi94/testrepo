@@ -1,0 +1,17 @@
+activity:
+  description: ""
+  id: TestRemoteAcc11111111111
+  inputs: {}
+  name: TestRemoteAcc11111111111
+  outputs: {}
+  pipeline:
+    pipeline: default/CD_Triggers_Automation/TriggerClone
+    inputSet:
+      pipeline: {}
+    stages: []
+    expression: {}
+    branch: ""
+    connectorRef: ""
+    parentEntityConnectorRef: ""
+    parentEntityRepoName: ""
+    repoIdentifier: ""
